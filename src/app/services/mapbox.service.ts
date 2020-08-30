@@ -14,7 +14,9 @@ export class MapboxService {
   style = style();
 
   constructor(private store: Store<IAppState>, private router: Router) {}
-
+  removeMap(): void {
+    this.map.remove();
+  }
   buildMap(): void {
     this.map = new mapboxgl.Map({
       container: 'map',
