@@ -1,0 +1,27 @@
+<table class="table">
+  <tr>
+    <th>id</th>
+    <th>operator</th>
+    <th>description</th>
+    <th>website</th>
+    <th>socket:type2</th>
+    <th>socket:yazaki</th>
+    <th>socket:shuko</th>
+  </tr>
+  <tr
+    *ngFor="let station of stations"
+    [routerLink]="['/all-station', station.id]"
+  >
+    <td>{{ station.id }}</td>
+    <td>{{ station.properties.operator }}</td>
+    <td>{{ station.properties.description }}</td>
+    <td>{{ station.properties.website }}</td>
+    <td>{{ station.properties["socket:type2"] }}</td>
+    <td>{{ station.properties["socket:yazaki"] }}</td>
+    <td>{{ station.properties["socket:shuko"] }}</td>
+  </tr>
+</table>
+
+<router-outlet></router-outlet>
+
+<app-mapbox></app-mapbox>

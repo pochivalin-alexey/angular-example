@@ -1,0 +1,41 @@
+table {
+  border: 2px solid #000;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 20px 0;
+}
+
+table td,
+th {
+  border-left: 2px solid #000;
+  border-right: 2px solid #000;
+  text-align: left;
+  padding: 2px;
+}
+
+table td:first-child {
+  border-left: none;
+}
+
+table td:last-child {
+  border-right: none;
+}
+
+th {
+  font-family: arial, sans-serif;
+  background-color: #dddddd;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+tr {
+  cursor: pointer;
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+}

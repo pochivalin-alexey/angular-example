@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <nav>
+    <ul>
+      <li routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+        <a [routerLink]="['/']">Все станции</a>
+      </li>
+      |
+      <li routerLinkActive="active">
+        <a [routerLink]="['/requests']">Заявки</a>
+      </li>
+    </ul>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

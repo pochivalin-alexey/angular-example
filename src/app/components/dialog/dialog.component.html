@@ -1,0 +1,140 @@
+<div class="dialog">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()">
+    <h2>Имя оператора</h2>
+
+    <div class="form-control">
+      <label>Тип правки</label>
+      <select
+        name="type"
+        formControlName="requestType"
+        (change)="onRequestTypeChange($event)"
+      >
+        <option [value]="0">Изменить информацию</option>
+        <option [value]="1">Изменить сокет</option>
+        <option [value]="2">Удалить объект</option>
+      </select>
+    </div>
+
+    <div *ngIf="requestType === '0'">
+      <div class="form-control">
+        <label>Оператор</label>
+        <input
+          type="text"
+          placeholder="Оператор..."
+          formControlName="operator"
+        />
+      </div>
+      <div
+        class="validation"
+        *ngIf="form.get('operator').invalid && form.get('operator').touched"
+      >
+        <small *ngIf="form.get('operator').errors.required"
+          >Оператор не может быть пустым</small
+        >
+      </div>
+
+      <div class="form-control">
+        <label>Сайт</label>
+        <input type="text" placeholder="Сайт..." formControlName="website" />
+      </div>
+
+      <div class="form-control">
+        <label>Описание</label>
+        <textarea
+          placeholder="Описание..."
+          formControlName="description"
+        ></textarea>
+      </div>
+    </div>
+
+    <div *ngIf="requestType === '1'">
+      <div class="form-control">
+        <label>type2</label>
+        <input
+          type="number"
+          placeholder="Введите число..."
+          formControlName="socket:type2"
+        />
+      </div>
+      <div
+        class="validation"
+        *ngIf="
+          form.get('socket:type2').invalid && form.get('socket:type2').touched
+        "
+      >
+        <small *ngIf="form.get('socket:type2').errors.negative"
+          >Не может быть отрицательным</small
+        >
+      </div>
+
+      <div class="form-control">
+        <label>yazaki</label>
+        <input
+          type="number"
+          placeholder="Введите число..."
+          formControlName="socket:yazaki"
+        />
+      </div>
+      <div
+        class="validation"
+        *ngIf="
+          form.get('socket:yazaki').invalid && form.get('socket:yazaki').touched
+        "
+      >
+        <small *ngIf="form.get('socket:yazaki').errors.negative"
+          >Не может быть отрицательным</small
+        >
+      </div>
+
+      <div class="form-control">
+        <label>shuko</label>
+        <input
+          type="number"
+          placeholder="Введите число..."
+          formControlName="socket:shuko"
+        />
+      </div>
+      <div
+        class="validation"
+        *ngIf="
+          form.get('socket:shuko').invalid && form.get('socket:shuko').touched
+        "
+      >
+        <small *ngIf="form.get('socket:shuko').errors.negative"
+          >Не может быть отрицательным</small
+        >
+      </div>
+    </div>
+
+    <div class="form-control" *ngIf="requestType === '2'">
+      <label>Причина удаления</label>
+      <textarea placeholder="Описание..." formControlName="cause"></textarea>
+    </div>
+    <div
+      class="validation"
+      *ngIf="form.get('cause').invalid && form.get('cause').touched"
+    >
+      <small *ngIf="form.get('cause').errors.required"
+        >Причина не может быть пустой</small
+      >
+    </div>
+
+    <div class="btn-group">
+      <button
+        class="btn"
+        type="submit"
+        [disabled]="
+          (requestType === '0' && form.get('operator').invalid) ||
+          (requestType === '1' &&
+            (form.get('socket:type2').invalid ||
+              form.get('socket:yazaki').invalid ||
+              form.get('socket:shuko').invalid)) ||
+          (requestType === '2' && form.get('cause').invalid)
+        "
+      >
+        Отправить
+      </button>
+      <button class="btn" type="button" (click)="goBack()">Отмена</button>
+    </div>
+  </form>
+</div>

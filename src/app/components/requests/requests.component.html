@@ -1,0 +1,17 @@
+<table class="table" *ngIf="requests.length; else empty">
+  <tr>
+    <th>Номер заявки</th>
+    <th>Идентификатор объекта</th>
+    <th>Тип заявки</th>
+    <th>Данные</th>
+  </tr>
+  <tr *ngFor="let request of requests">
+    <td>{{ request.id }}</td>
+    <td>{{ request.stationId }}</td>
+    <td>{{ locales[type[request.type]] }}</td>
+    <td>{{ request.data | json }}</td>
+  </tr>
+</table>
+<ng-template #empty>
+  <p>Нет заявок</p>
+</ng-template>
